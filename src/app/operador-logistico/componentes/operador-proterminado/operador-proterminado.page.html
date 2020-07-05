@@ -1,0 +1,131 @@
+<ion-header>
+    <div class="seccion-menu1">
+      <ion-buttons slot="start" class="col-head1">
+          <ion-img style="width: 30px; height: 30px;" src="/assets/icon/log1.jpg"></ion-img>
+      </ion-buttons>
+      <div class="col-head2">
+        <div style="color: white;">Operador logistico</div>
+      </div>
+      <ion-buttons slot="start" class="col-head3">
+        <ion-menu-button style="color: white;"></ion-menu-button>
+      </ion-buttons>
+    </div>
+</ion-header>
+
+<ion-content>
+
+    <ion-searchbar routerLink="/operador-filtro" placeholder="Rastreo de carga">
+    </ion-searchbar>
+    
+    <ion-grid class="grid-tabs">
+      <ion-row class="txt-tabs menu-cont-wrapp">
+        <div class="tabs-col" routerLink="/operador-logistico">
+          <div>
+            <div>
+                <div class="menu-cont-wrapp">
+                  <div class="col-log-tab">
+                      <ion-img class="img-tab" src="/assets/icon/v-ico-transito.png"></ion-img> 
+                  </div>
+                  <div class="col-txt-tab">
+                      En transito
+                  </div>
+                </div>  
+            </div>
+          </div>  
+        </div>
+        <div class="tabs-col" routerLink="/operador-enproceso">
+          <div>
+              <div>
+                  <div class="menu-cont-wrapp">
+                    <div class="col-log-tab">
+                        <ion-img class="img-tab" src="/assets/icon/v-ico-proceso.png"></ion-img> 
+                    </div>
+                    <div class="col-txt-tab">
+                        En proceso
+                    </div>
+                  </div>  
+              </div>
+          </div>  
+        </div>
+        <div class="tabs-col">
+          <div>
+              <div [ngClass]='classNameTab'>
+                  <div class="menu-cont-wrapp">
+                    <div class="col-log-tab">
+                        <ion-img class="img-tab" src="/assets/icon/v-ico-proceso-finalizado.png"></ion-img> 
+                    </div>
+                    <div class="col-txt-tab">
+                        Proceso terminado
+                    </div>
+                  </div>  
+              </div>
+          </div>  
+        </div>
+      </ion-row>
+    </ion-grid>
+
+      <div class="tabcontent">
+
+        <ion-card>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                    <b style="color: #4d4d4d;">Detalle del BL</b>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+        </ion-card> 
+      
+        <ion-card *ngFor="let res of list_array_trans"> 
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <div style="color: black;">BL</div>
+              </ion-col>
+              <ion-col align="right">
+                <div style="color: #3e6aaa; 
+                  border-bottom: 1px solid; 
+                  display: initial;" 
+                  (click)="detailBL(res[0])">
+                  {{res[0]}}
+                </div>  
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <div style="color: black;">DO/Pedido</div>
+              </ion-col>
+              <ion-col align="right">
+                  {{ res[1] }}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <div style="color: black;">Fecha de arribo o ETA</div>                
+              </ion-col>
+              <ion-col align="right">
+                  {{ res[3] }}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                  <div style="color: black;">Motonave</div>
+              </ion-col>
+              <ion-col align="right">
+                  {{ res[4] }} 
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                  <div style="color: black;">Estado</div>
+              </ion-col>
+              <ion-col align="right">
+                  {{ res[2] }}  
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+
+      </div>
+    
+</ion-content>

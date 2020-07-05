@@ -1,0 +1,48 @@
+:host{
+
+    .background1{
+        background-color: #74ca81;
+        color: white;
+    }
+    .background2{
+        background-color: #d26e6c;
+        color: white;
+    }
+    .background3{
+        background-color: #e7973e;
+        color: black;
+    }
+    .pedido-ok, .pedido-error, .pedido-warning{        
+        font-weight: bold;
+        padding: 20px;
+        text-align: center;
+    }
+    .pedido-ok img, .pedido-error img, .pedido-warning img{
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .pedido-ok div, .pedido-error div, .pedido-warning div{
+        display: inline-block;
+        vertical-align: middle;
+        padding: 0 4px;
+        width: 90%;
+    }
+    ion-checkbox{
+        border-style: solid !important;
+        border-color: #81b046!important;
+        border-width: 2px !important;
+        --background-checked: #81b046;
+        --border-color: #FFFFFF;
+        --border-color-checked :#81b046;
+    }
+    .img-cant-fert{        
+        display: inline-block;
+        height: 20px;
+        text-align: right;
+        width: 20px;
+    }
+    .cant-style{
+        left: -5px;
+        position: relative;        
+    }
+}

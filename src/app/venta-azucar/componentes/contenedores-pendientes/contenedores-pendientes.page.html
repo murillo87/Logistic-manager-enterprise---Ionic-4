@@ -1,0 +1,156 @@
+<ion-header>
+    <div class="seccion-menu3">
+      <ion-buttons slot="start" class="col-head1">
+          <ion-img style="width: 30px; height: 30px;" src="/assets/icon/log3.jpg"></ion-img>
+      </ion-buttons>
+      <div class="col-head2">
+        <div style="color: white;">Venta de azucar</div>
+      </div>
+      <ion-buttons slot="start" class="col-head3">
+        <ion-menu-button style="color: white;"></ion-menu-button>
+      </ion-buttons> 
+    </div>
+</ion-header>
+
+<ion-content>
+
+    <ion-searchbar routerLink="/filtro-contenedores/pendientes" placeholder="Contenedores pendientes">
+    </ion-searchbar>
+
+  <ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div class="select-contenedores"><strong>Pendientes</strong></div>
+        </ion-col>
+        <ion-col align="right" (click)="reprogramados()">
+          <strong>Reprogramados</strong>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <ion-card *ngFor="let res of list_array_result | slice:0:slice; let i=index" class="backgrund-detail contenedores-state" style="line-height: 2;">
+    
+    <ion-card style="background-color: #008d3e; color: white; font-weight: bold;">
+      <ion-row>
+        <ion-col>Booking</ion-col>
+        <ion-col align="right">{{res['booking']}}
+          <ion-icon style="font-size: 20px;" color="primary-contrast" name="arrow-down" (click)="res.open = !res.open" *ngIf="!res.open"></ion-icon>
+          <ion-icon style="font-size: 20px;" color="primary-contrast" name="arrow-up" (click)="res.open = !res.open" *ngIf="res.open"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+    <div *ngIf="res.open">
+
+      <div style="border-bottom: 10px solid lightgray;" *ngFor="let obj of res.data">  
+        <ion-grid>
+          <ion-row class="border-line-detail" style="background-color: #f2f2f2;">
+            <ion-col>
+              <div style="color: black;">Contenedor</div>
+            </ion-col>
+            <ion-col align="right">
+              {{obj[0]}}
+            </ion-col>
+          </ion-row>
+          <ion-row class="border-line-detail" style="background-color: #f2f2f2;">
+            <ion-col>
+              <div style="color: black;">Cliente</div>
+            </ion-col>
+            <ion-col align="right">
+                {{obj[1]}}
+            </ion-col>
+          </ion-row>
+          <ion-row class="border-line-detail">
+            <ion-col>
+              <div style="color: black;">Ingenio</div>
+            </ion-col>
+            <ion-col align="right">
+                {{obj[2]}}
+            </ion-col>
+          </ion-row>
+          <ion-row class="border-line-detail">
+            <ion-col>
+              <div style="color: black;">Motonave</div>
+            </ion-col>
+            <ion-col align="right">
+                {{obj[3]}}
+            </ion-col>
+          </ion-row>
+          <ion-row class="border-line-detail">
+            <ion-col>
+              <div style="color: black;">Viaje</div>
+            </ion-col>
+            <ion-col align="right">
+                {{obj[4]}}
+            </ion-col>
+          </ion-row>
+          <ion-row class="border-line-detail">
+            <ion-col>
+              <div style="color: black;">Línea Marítima</div>
+            </ion-col>
+            <ion-col align="right">
+                {{obj[5]}}
+            </ion-col>
+          </ion-row>
+          <ion-row class="border-line-detail">
+            <ion-col>
+              <div style="color: black;">Destino</div>
+            </ion-col>
+            <ion-col align="right">
+                {{obj[6]}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div style="color: black;">Descripción Motivo</div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+                {{obj[7]}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div style="color: black;">Descripción Del Material</div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              {{obj[8]}}
+            </ion-col>
+          </ion-row>
+          <ion-row class="border-line-detail">
+            <ion-col>
+              <div style="color: black;">Cantidad De Sacos</div>
+            </ion-col>
+            <ion-col align="right">
+                {{obj[9]}}
+            </ion-col>
+          </ion-row>
+          <ion-row class="border-line-detail">
+            <ion-col>
+              <div style="color: black;">Entrega</div>
+            </ion-col>
+            <ion-col align="right">
+                {{obj[10]}}
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+    </div>
+
+  </ion-card>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        distance="1%"
+        loadingText="Cargando datos...">
+      </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

@@ -1,0 +1,207 @@
+<ion-header>
+  <div class="seccion-menu3">
+    <ion-buttons slot="start" class="col-head1">
+        <ion-icon style="font-size: 25px;" name="arrow-back" color="primary-contrast" (click)="backSearch()"></ion-icon>
+    </ion-buttons>
+    <div class="col-head2">
+      <div style="color: white;">Resultados</div>
+    </div>
+    <ion-buttons slot="start" class="col-head3">
+      <ion-menu-button style="color: white;"></ion-menu-button>
+    </ion-buttons>
+  </div>
+</ion-header>
+
+<ion-content> 
+
+    <ion-card>
+        <ion-grid>
+            <ion-row>
+              <strong style="padding-right: 5px;">Registros encontrados:</strong> {{cant_reg}}
+            </ion-row>
+        </ion-grid>
+    </ion-card>  
+  
+    <ion-card *ngFor="let res of list_array_result | slice:0:slice; let i=index" class="backgrund-detail contenedores-state" style="line-height: 2;">
+        <ion-grid>
+  
+          <ion-row class="border-line-detail content-proceso" style="background-color: #f2f2f2;">
+            <div style="color: black; font-weight: bold;" class="pro-log-col1">Booking: <!--<div class="link-pro-log" (click)="entrega()"></div>-->{{res['booking'][0]}}</div>
+            <div class="pro-log-col2">
+              <img style="display: initial; height: 15px; width: 25px;" src="/assets/icon/pro-log.png" (click)="res.open = !res.open" *ngIf="!res.open">
+              <img style="display: initial; height: 15px; width: 25px;" src="/assets/icon/05-up.png" (click)="res.open = !res.open" *ngIf="res.open">
+            </div>
+          </ion-row>
+          
+          <div *ngIf="res.open">
+            <!--<ion-row class="border-line-detail">
+              <ion-col>
+                <div style="color: black;">Booking</div>
+              </ion-col>
+              <ion-col align="right">
+                  {{res['booking'][0]}}
+              </ion-col>
+            </ion-row>-->
+            <ion-row class="border-line-detail">
+              <ion-col>
+                <div style="color: black;">Motonave</div>
+              </ion-col>
+              <ion-col align="right">
+                  {{res['booking']['data']['motonave']}}
+              </ion-col>
+            </ion-row>
+            <ion-row class="border-line-detail">
+              <ion-col>
+                <div style="color: black;">Viaje</div>
+              </ion-col>
+              <ion-col align="right">
+                  {{res['booking']['data']['viaje']}}
+              </ion-col>
+            </ion-row>
+            <ion-row class="border-line-detail">
+              <ion-col>
+                <div style="color: black;">Linea maritima</div>
+              </ion-col>
+              <ion-col align="right">
+                  {{res['booking']['data']['lineaMaritima']}}
+              </ion-col>
+            </ion-row>
+            <ion-row class="border-line-detail">
+              <ion-col>
+                <div style="color: black;">ETA</div>
+              </ion-col>
+              <ion-col align="right">
+                  {{res['booking']['data']['eta']}}
+              </ion-col>
+            </ion-row>
+            <ion-row class="border-line-detail">
+              <ion-col>
+                <div style="color: black;">Cutoff</div>
+              </ion-col>
+              <ion-col align="right">
+                  {{res['booking']['data']['cutOff']}}
+              </ion-col>
+            </ion-row>
+            <ion-row class="border-line-detail content-proceso">
+              <div class="pro-log-col1">Total de contenedores nominados</div>
+              <div class="pro-log-col2">{{res['booking']['data']['totalDeContenedoresNominados']}}</div>
+            </ion-row>
+            <ion-row class="border-line-detail">
+              <ion-col>
+                <div style="color: black;">Tipo de contenedores</div>
+              </ion-col>
+              <ion-col align="right">
+                  {{res['booking']['data']['tipoDeContenedores']}}
+              </ion-col>
+            </ion-row>
+            <!--<div class="border-line-detail" style="line-height: 1.3;">
+              <ion-row>
+                <ion-col>
+                  <div style="color: black;">Instrucciones especiales</div>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium.
+                </ion-col>
+              </ion-row>
+            </div>-->
+  
+            <ion-card *ngFor="let obj of res.entrega">
+              <ion-row>
+                <ion-col>Entrega:</ion-col>
+                <ion-col align="right">
+                  <div class="link-pro-log" (click)="entrega(obj[0])">{{obj[0]}}</div>
+                  <img style="display: initial; height: 15px; width: 25px;" src="/assets/icon/pro-log.png" (click)="obj.open = !obj.open" *ngIf="!obj.open">
+                  <img style="display: initial; height: 15px; width: 25px;" src="/assets/icon/05-up.png" (click)="obj.open = !obj.open" *ngIf="obj.open">
+                </ion-col>
+              </ion-row>
+              
+              <div *ngIf="obj.open">
+  
+                <ion-row class="border-line-detail">
+                  <ion-col>
+                    <div style="color: black;">Nombre del cliente</div>
+                  </ion-col>
+                  <ion-col align="right">
+                    {{obj['data']['nombreDelCliente']}}
+                  </ion-col>
+                </ion-row>
+                <ion-row class="border-line-detail">
+                  <ion-col>
+                    <div style="color: black;">Nombre del ingeniero</div>
+                  </ion-col>
+                  <ion-col align="right">
+                    {{obj['data']['nombreDelIngenio']}}
+                  </ion-col>
+                </ion-row>
+                <ion-row class="border-line-detail">
+                  <ion-col>
+                    <div style="color: black;">Descripción del material</div>
+                  </ion-col>
+                </ion-row>
+                <ion-row class="border-line-detail">
+                  <ion-col>
+                    {{obj['data']['descripcionDelMaterial']}}
+                  </ion-col>
+                </ion-row>
+                <ion-row class="border-line-detail">
+                  <ion-col size="10">
+                    <div style="color: black;">Cantidad nominada total</div>
+                  </ion-col>
+                  <ion-col align="right" size="2">
+                    {{obj['data']['cantidadNominadaTotal']}}
+                  </ion-col>
+                </ion-row>
+                <ion-row class="border-line-detail">
+                  <ion-col size="10">
+                    <div style="color: black;">Unidad de medida</div>
+                  </ion-col>
+                  <ion-col size="2" align="right">
+                    {{obj['data']['unidadDeMedida']}}
+                  </ion-col>
+                </ion-row>
+                <ion-row class="border-line-detail">
+                  <ion-col size="10">
+                    <div style="color: black;">Cantidad nominados por contenedor</div>
+                  </ion-col>
+                  <ion-col size="2" align="right">
+                    {{obj['data']['cantidadNominadaPorContenedor']}}
+                  </ion-col>
+                </ion-row>
+                <ion-row class="border-line-detail">
+                  <ion-col>
+                    <div style="color: black;">Supersión externa</div>
+                  </ion-col>
+                  <ion-col align="right">
+                    {{obj['data']['supervisionExterna']}}
+                  </ion-col>
+                </ion-row>
+                <ion-row class="border-line-detail">
+                  <ion-col>
+                    <div style="color: black;">Instrucciones especiales</div>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    {{obj['data']['instruccionesEspeciales']}}
+                  </ion-col>
+                </ion-row>
+  
+              </div>
+              
+            </ion-card>
+  
+          </div>        
+        </ion-grid>
+    </ion-card>
+  
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content
+          loadingSpinner="bubbles"
+          distance="1%"
+          loadingText="Cargando datos...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  
+  </ion-content>

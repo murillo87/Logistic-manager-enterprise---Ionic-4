@@ -1,0 +1,152 @@
+<ion-header>
+    <div class="seccion-menu2">
+        <ion-buttons slot="start" class="menu-nominacion1">
+            <ion-img style="width: 30px; height: 30px;" src="/assets/icon/log2.jpg"></ion-img>
+        </ion-buttons>
+        <ion-title class="menu-nominacion2"><div style="color: white;">Agricola</div></ion-title>
+        <div class="search-nominacion menu-right">
+        <ion-buttons slot="start">
+            <ion-menu-button style="color: white;"></ion-menu-button>
+        </ion-buttons> 
+        </div>  
+    </div>
+  </ion-header>
+    
+    <ion-content>
+  
+      <div *ngIf="result_ok" class="pedido-ok background1">
+        <img src="/assets/icon/28-exito.png" style="width: 20px; height: 20px;"><div>El pedido se ha realizado con exito.</div>
+      </div>
+      <div *ngIf="result_error" class="pedido-error background2">
+        <img src="/assets/icon/29-error.png" style="width: 20px; height: 20px;"><div>Ha ocurrido un error con la solicitud del pedido.</div>
+      </div>
+      <div *ngIf="result_warning" class="pedido-warning background3">
+        <img src="/assets/icon/30-informativo.png" style="width: 20px; height: 20px;"><div>No tiene cupo para solicitar este pedido - El vendedor lo contactará.</div>
+      </div>
+  
+        <ion-card>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <b style="color: #4d4d4d;">Solicitar un pedido</b>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+        
+        <ion-card>
+  
+          <ion-list>
+  
+            <ion-list-header>Lugar de entrega</ion-list-header>
+            <ion-item>              
+              <ion-label>Seleccione...</ion-label>
+              <select style="width: 100%;" name="title" id="title" [(ngModel)]="place">
+                  <option selected [value]="place">{{place}}</option>
+              </select>
+            </ion-item>    
+  
+            <ion-list-header>Forma de pago</ion-list-header>
+              <ion-item>              
+                <ion-select placeholder="Seleccione pago" [(ngModel)]="pay_data" (ionChange)="payChange($event)">
+                  <ion-select-option *ngFor="let pay of list_array_pay_res" [value]="pay">
+                    {{pay['value']}}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+  
+              <ion-list-header>Tipo</ion-list-header>
+              <ion-item>              
+                <ion-select placeholder="Seleccione tipo" [(ngModel)]="type" (ionChange)="onChange($event)">
+                  <ion-select-option>Estandar</ion-select-option>
+                  <ion-select-option>Sencillo</ion-select-option>
+                </ion-select>
+              </ion-item>
+  
+              <ion-list-header>Detalle (Tipo de productos)</ion-list-header>
+              <ion-item class="select-site-prod">      
+  
+                <div *ngIf="cont_type_1">
+                  <ion-select placeholder="Seleccione producto" cancelText="Cancelar" [interfaceOptions]="customActionSheetOptions" interface="action-sheet" (ionChange)="changeProd()" [(ngModel)]="pro_data">
+                    <div *ngFor="let res of list_array_products">
+  
+                        <div *ngFor="let obj of res[0].atributos">                      
+                          <ion-select-option *ngIf="obj.tipo === 'ZPVN'" [value]="res[0]">
+                              {{res[0].nombre}}
+                          </ion-select-option>
+                        </div>
+  
+                    </div> 
+                  </ion-select>
+                </div>
+  
+                <div *ngIf="cont_type_2">
+                    <ion-select placeholder="Seleccione producto" cancelText="Cancelar" [interfaceOptions]="customActionSheetOptions" interface="action-sheet" (ionChange)="changeProd($event)" [(ngModel)]="pro_data">
+                      <div *ngFor="let res of list_array_products">
+    
+                          <div *ngFor="let obj of res[0].atributos">                      
+                            <ion-select-option *ngIf="obj.tipo === 'ZPME'" [value]="res[0]">
+                                {{res[0].nombre}}
+                            </ion-select-option>
+                          </div>
+    
+                      </div> 
+                    </ion-select>
+                </div>
+  
+              </ion-item>
+  
+          </ion-list>
+  
+          <ion-row>
+            <ion-list-header>Cantidad</ion-list-header>
+            <ion-col size="2">
+              <img class="img-cant-fert" (click)="removeVal()" src="/assets/icon/less-fer.png">
+            </ion-col>
+            <ion-col size="8">
+              <input type="number" color="dark" placeholder="Cantidad" [(ngModel)]="val_cant" style="border: 0; text-align: center; width: 100%;"/>
+            </ion-col>
+            <ion-col size="2" align="right">
+              <img class="img-cant-fert" (click)="addVal()" src="/assets/icon/more-fer.png">
+            </ion-col>
+          </ion-row>
+  
+          <ion-list>
+              <ion-list-header>Presentación</ion-list-header>
+              <ion-item>
+                <div>
+                  <!--<input type="string" [(ngModel)]="pro_data_und" readonly/>-->
+                  {{pro_data_und}}
+                </div>
+              </ion-item>
+          </ion-list>
+  
+          <ion-list>
+              <ion-list-header>Precio de lista</ion-list-header>
+              <ion-item>
+                <div>
+                  <!--<input type="string" [(ngModel)]="pro_data_price | number" readonly/>-->
+                  {{pro_data_price  | currency : 'USD' : 'symbol' : '1.0'}} 
+                </div>
+              </ion-item>
+          </ion-list>
+  
+        </ion-card>
+  
+        <!-- fab placed to the bottom end -->
+        <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+            <ion-fab-button color="success" (click)="addCart()">
+              <ion-icon name="add"></ion-icon>
+            </ion-fab-button>
+        </ion-fab>
+    
+    </ion-content>
+  
+    <ion-footer>
+  
+      <button *ngIf="btn_cart" (click)="goCart()" class="add-ped-style">
+        Ir al carrito de compras
+      </button>
+  
+    </ion-footer>
+    

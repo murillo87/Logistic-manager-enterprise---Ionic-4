@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <div>
+        Bienvenido, por favor inicie sesión
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="login-content">
+    <div class="login-content-wrapp">
+      <div class="login-col1">
+        <ion-img src="/assets/icon/logo-login.jpg"></ion-img>
+      </div>
+      <div class="login-col2">
+        Digital
+      </div>
+    </div>
+
+    <br>
+      <ion-item class="item-inp-login">
+        <ion-label color="loginbtn" position="stacked">Email</ion-label>
+        <ion-input type="email" [(ngModel)]="email" id="correo" placeholder="Ingrese Email" color="loginbtn"></ion-input>
+      </ion-item>
+
+      <ion-item class="item-inp-login">
+        <ion-label color="loginbtn" position="stacked">Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="password" placeholder="Ingrese Contraseña" color="loginbtn"></ion-input>
+      </ion-item>
+
+      <button class="btn-login-access" (click)="submitLogin()">Iniciar sesión</button>
+
+  </div>
+</ion-content>

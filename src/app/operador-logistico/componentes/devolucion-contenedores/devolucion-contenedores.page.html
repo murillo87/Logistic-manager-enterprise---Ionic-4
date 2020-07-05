@@ -1,0 +1,77 @@
+<ion-header>
+    <div class="seccion-menu1">
+        <ion-buttons slot="start" class="col-head1">
+            <ion-img style="width: 30px; height: 30px;" src="/assets/icon/log1.jpg"></ion-img>
+        </ion-buttons>
+        <div class="col-head2">
+            <div style="color: white;">Operador logistico</div>
+        </div>
+        <ion-buttons slot="start" class="col-head3">
+            <ion-menu-button style="color: white;"></ion-menu-button>
+        </ion-buttons>         
+    </div>        
+</ion-header>
+
+<ion-content>
+
+    <ion-searchbar routerLink="/filtro-operador-bl/devolucion-contenedores" placeholder="Fecha límite de devolución de contenedores">
+    </ion-searchbar>
+    
+    <ion-card *ngFor="let res of list_array_result | slice:0:slice; let i=index">
+        <div class="menu-cont-wrapp space-search">
+          <ion-grid>
+
+            <ion-row>
+                <ion-col>
+                    <div style="color:#000000;">BL</div>
+                </ion-col>
+                <ion-col align="right">
+                    {{res[0]}}
+                </ion-col>
+            </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <div style="color:#000000;">DO/PEDIDOS</div>
+                    </ion-col>
+                    <ion-col align="right">
+                        {{res[1]}}
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                      <div style="color:#000000;">ID del contenedor</div>
+                    </ion-col>
+                    <ion-col align="right">
+                        {{res[2]}}
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <div style="color:#000000;">Fec. Lim. devolución</div>
+                    </ion-col>
+                    <ion-col align="right">
+                        {{res[3]}}
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <div style="color:#000000;">Fecha de devolución</div>
+                    </ion-col>
+                    <ion-col align="right">
+                        {{res[4]}}
+                    </ion-col>                
+                </ion-row>
+
+          </ion-grid>
+        </div>
+    </ion-card>
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content
+          loadingSpinner="bubbles"
+          distance="1%"
+          loadingText="Cargando datos...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+</ion-content>

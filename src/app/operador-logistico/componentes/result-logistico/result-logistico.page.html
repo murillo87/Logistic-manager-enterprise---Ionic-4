@@ -1,0 +1,89 @@
+<ion-header>
+    <div class="seccion-menu1">
+        <ion-buttons slot="start" class="col-head1">
+            <ion-icon style="font-size: 25px;" name="arrow-back" color="primary-contrast" (click)="backSearch()"></ion-icon>
+        </ion-buttons>
+        <div class="col-head2">
+            <div style="color: white;">Resultados</div>
+        </div>
+        <ion-buttons slot="start" class="col-head3">
+            <ion-menu-button style="color: white;"></ion-menu-button>
+        </ion-buttons>
+    </div>
+</ion-header>
+
+<ion-content>
+
+    <div class="tabcontent">
+
+        <ion-card>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                    <b style="color: #4d4d4d;">Detalle del BL</b>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+        </ion-card> 
+
+        <ion-card>
+            <ion-grid>
+                <ion-row>
+                  <strong style="padding-right: 5px;">Registros encontrados:</strong> {{cant_reg}}
+                </ion-row>
+            </ion-grid>
+        </ion-card>
+      
+        <ion-card *ngFor="let res of list_array_result">          
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <div style="color: black;">BL</div>
+              </ion-col>
+              <ion-col align="right">
+                <div style="color: #3e6aaa; 
+                  border-bottom: 1px solid; 
+                  display: initial;" 
+                  (click)="detailBL(res[0])">
+                  {{res[0]}}
+                </div>  
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <div style="color: black;">DO/Pedido</div>
+              </ion-col>
+              <ion-col align="right">
+                  {{ res[1] }}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <div style="color: black;">Fecha de arribo o ETA</div>                
+              </ion-col>
+              <ion-col align="right">
+                  {{ res[3] }}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                  <div style="color: black;">Motonave</div>
+              </ion-col>
+              <ion-col align="right">
+                  {{ res[4] }} 
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                  <div style="color: black;">Estado</div>
+              </ion-col>
+              <ion-col align="right">
+                  {{ res[2] }}  
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+
+      </div>
+
+</ion-content>

@@ -1,0 +1,99 @@
+<ion-header>
+    <div class="seccion-menu3">
+      <ion-buttons slot="start" class="col-head1">
+          <ion-img style="width: 30px; height: 30px;" src="/assets/icon/log3.jpg"></ion-img>
+      </ion-buttons>
+      <div class="col-head2">
+        <div style="color: white;">Venta de azucar</div>
+      </div>
+      <ion-buttons slot="start" class="col-head3">
+        <ion-menu-button style="color: white;"></ion-menu-button>
+      </ion-buttons> 
+    </div>
+</ion-header>
+  
+  <ion-content>
+
+      <ion-searchbar routerLink="/filtro-nominaciones" placeholder="Nominaciones">
+      </ion-searchbar>   
+      
+      <div class="">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                  <b style="color: #4d4d4d;">Resumen de nominaciones</b>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+      </div>
+
+      <div class="divider-facturas" *ngFor="let res of list_array_result | slice:0:slice; let i=index">
+          <ion-grid class="content-facturas" style="line-height: 1.5;">
+            <ion-row style="border-bottom: 1px solid lightgray;">
+              <ion-col>
+                <div style="color: black;">Radicado</div>
+              </ion-col>
+              <ion-col align="right">
+                <!--<div (click)="radicadoData(res[0])" style="border-bottom: 1px solid; color: #40a970; display: initial;">
+                  {{res[0]}}
+                </div>-->
+                <div style="color: #4e4e4e;">
+                  {{res[0]}}
+                </div>
+              </ion-col>
+            </ion-row>
+            <ion-row style="border-bottom: 1px solid lightgray;">
+              <ion-col>
+                <div style="color: black;">Booking</div>
+              </ion-col>
+              <ion-col align="right">
+                <div (click)="bookingData(res[1])" style="border-bottom: 1px solid; color: #40a970; display: initial;">
+                  {{res[1]}}
+                </div>
+              </ion-col>
+            </ion-row>
+            <ion-row style="border-bottom: 1px solid lightgray;">
+              <ion-col>
+                <div style="color: black;">Motonave</div>
+              </ion-col>
+              <ion-col align="right">
+                <div style="color: #4e4e4e;">{{res[2]}}</div>
+              </ion-col>
+            </ion-row>
+            <ion-row style="border-bottom: 1px solid lightgray;">
+              <ion-col>
+                <div style="color: black;">ETA</div>
+              </ion-col>
+              <ion-col align="right">
+                <div style="color: #4e4e4e;">{{res[3]}}</div>
+              </ion-col>
+            </ion-row>
+            <ion-row style="border-bottom: 1px solid lightgray;">
+              <ion-col>
+                <div style="color: black;">Contrato</div>
+              </ion-col>
+              <ion-col align="right">
+                <div style="color: #4e4e4e;">{{res[4]}}</div>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <div style="color: black;">Tipo de venta</div>
+              </ion-col>
+              <ion-col align="right">
+                <div style="color: #4e4e4e;">{{res[5]}}</div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>      
+      </div>
+
+      <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+          <ion-infinite-scroll-content
+            loadingSpinner="bubbles"
+            distance="1%"
+            loadingText="Cargando datos...">
+          </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+
+  </ion-content>
+  

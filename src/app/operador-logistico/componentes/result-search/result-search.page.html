@@ -1,0 +1,432 @@
+<ion-header>
+    <div class="seccion-menu1">
+        <ion-buttons slot="start" class="col-head1">
+            <ion-icon style="font-size: 25px;" name="arrow-back" color="primary-contrast" (click)="backSearch()"></ion-icon>
+        </ion-buttons>
+        <div class="col-head2">
+            <div style="color: white;">Resultados</div>
+        </div>
+        <ion-buttons slot="start" class="col-head3">
+            <ion-menu-button style="color: white;"></ion-menu-button>
+        </ion-buttons>
+    </div>
+</ion-header>
+
+<ion-content>
+
+    <div class="tabcontent">
+
+        <!--<ion-card>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                    <b style="color: #4d4d4d;">Detalle del BL</b>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+        </ion-card>-->
+        
+        <div *ngIf="content_mercancia">
+
+          <ion-card>
+              <ion-grid>
+                  <ion-row>
+                    <strong style="padding-right: 5px;">Registros encontrados:</strong> {{cant_reg}}
+                  </ion-row>
+              </ion-grid>
+          </ion-card>         
+
+          <ion-card *ngFor="let res of list_array_result | slice:0:slice; let i=index" style="border: 1px solid #6b8fc1;">
+
+            <ion-grid style="background-color: #f2f2f2; margin-bottom: 10px;">
+                <ion-row>
+                  <ion-col>
+                    <div style="color: black;">BL</div>
+                  </ion-col>
+                  <ion-col align="right">
+                    {{res[0]}}
+                  </ion-col>
+                </ion-row>
+            </ion-grid>
+    
+            <div (click)="res.open = !res.open" class="menu-cont-wrapp" style="justify-content: center; margin-bottom: 10px;">
+              <div style="color: #3d6aab; padding-right: 7px;">
+                Ver información
+              </div>
+              <div>
+                <img class="img-tab" src="/assets/icon/12-op.png" *ngIf="!res.open"/>
+                <img class="img-tab" src="/assets/icon/up_12.png" *ngIf="res.open"/>
+              </div>            
+            </div>  
+    
+          <div *ngIf="res.open" [className]="'dataShow' + res[1]">
+              <ion-grid style="background-color: #f2f2f2;">
+                    <ion-row>
+                        <ion-col>
+                            <div style="color:#000000;">DO</div>
+                        </ion-col>
+                        <ion-col align="right">
+                            {{res[1]}}
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+                
+                <ion-grid class="space-search">
+                    <ion-row>
+                        <ion-col>
+                            <div style="color:#000000;">Fecha Ingreso a deposito</div>
+                        </ion-col>
+                        <ion-col align="right">
+                            {{res[2]}}
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                          <div style="color:#000000;">Días permanencia M/cia</div>
+                        </ion-col>
+                        <ion-col align="right">
+                            {{res[3]}}
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <div style="color:#000000;">Lote</div>
+                        </ion-col>
+                        <ion-col align="right">
+                            {{res[4]}}
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <div style="color:#000000;">Producto</div>
+                        </ion-col>
+                        <ion-col align="right">
+                            {{res[5]}}
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>
+                          <div style="color:#000000;">Cantidad Contenedores</div>
+                      </ion-col>
+                      <ion-col align="right">
+                            {{res[6]}}
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>
+                          <div style="color:#000000;">U/M</div>
+                      </ion-col>
+                      <ion-col align="right">
+                            {{res[7]}}
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>
+                          <div style="color:#000000;">Recibido</div>
+                      </ion-col>
+                      <ion-col align="right">
+                            {{res[8]}}
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>
+                          <div style="color:#000000;">Despacho</div>
+                      </ion-col>
+                      <ion-col align="right">
+                            {{res[9]}}
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>
+                          <div style="color:#000000;">Averias</div>
+                      </ion-col>
+                      <ion-col align="right">
+                            {{res[10]}}
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>
+                          <div style="color:#000000;">Saldo</div>
+                      </ion-col>
+                      <ion-col align="right">
+                            {{res[11]}}
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>
+                          <div style="color:#000000;">Observaciones</div>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>                    
+                        <ion-col>
+                            {{res[12]}}
+                        </ion-col>
+                    </ion-row>
+              </ion-grid>
+          </div>
+    
+          </ion-card>
+
+        </div>
+
+        <div *ngIf="content_despacho">
+
+            <ion-card>
+                <ion-grid>
+                    <ion-row>
+                      <strong style="padding-right: 5px;">Registros encontrados:</strong> {{cant_reg}}
+                    </ion-row>
+                </ion-grid>
+            </ion-card>  
+
+            <div *ngFor="let res of list_array_result | slice:0:slice; let i=index">     
+       
+                <div *ngFor="let obj of res.data | slice:0:slice; let i=index">
+        
+                    <div *ngIf="obj.length == 8">
+        
+                            <ion-card>
+                                    <ion-grid>
+                                        <ion-row style="background-color: #f2f2f2;">
+                                            <ion-col>
+                                                <div style="color:#000000;">BL</div>
+                                            </ion-col>
+                                            <ion-col align="right">
+                                                {{obj[0]}}
+                                            </ion-col>
+                                        </ion-row>
+                                        <ion-row>
+                                            <ion-col>
+                                                <div style="color:#000000;">DO</div>
+                                            </ion-col>
+                                            <ion-col align="right">
+                                                {{obj[1]}}      
+                                            </ion-col>
+                                        </ion-row>
+                                        <ion-row>
+                                            <ion-col>
+                                                <div style="color:#000000;">Fecha de traslado</div>
+                                            </ion-col>
+                                            <ion-col align="right">
+                                                {{obj[2]}}
+                                            </ion-col>
+                                        </ion-row>
+                                        <ion-row>
+                                            <ion-col>
+                                                <div style="color:#000000;">Producto</div>
+                                            </ion-col>
+                                            <ion-col align="right">
+                                                {{obj[3]}}
+                                            </ion-col>
+                                        </ion-row>
+                                        <ion-row>
+                                            <ion-col>
+                                                <div style="color:#000000;">Lote</div>
+                                            </ion-col>
+                                            <ion-col align="right">
+                                                {{obj[4]}}
+                                            </ion-col>
+                                        </ion-row>
+                                        <ion-row>
+                                            <ion-col>
+                                                <div style="color:#000000;">Cantidad BL</div>
+                                            </ion-col>
+                                            <ion-col align="right">
+                                                {{obj[5]}}
+                                            </ion-col>
+                                        </ion-row>
+                                        <ion-row>
+                                            <ion-col>
+                                                <div style="color:#000000;">Desembalaje</div>
+                                            </ion-col>
+                                            <ion-col align="right">
+                                                {{obj[6]}}
+                                            </ion-col>
+                                        </ion-row>
+                                        <ion-row>
+                                            <ion-col>
+                                                <div style="color:#000000;">UM</div>
+                                            </ion-col>
+                                            <ion-col align="right">
+                                                {{obj[7]}}
+                                            </ion-col>
+                                        </ion-row>
+                                    </ion-grid>
+                            </ion-card>
+        
+                    </div>
+        
+                    <div *ngIf="obj.length == 9">
+        
+                        <ion-card>
+        
+                            <ion-grid>
+                                <ion-row>
+                                    <ion-col>
+                                        <div style="color:#000000;">
+                                        <strong>Detalle del despacho de la mercancia</strong>
+                                        </div>
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row>
+                                    <ion-col>
+                                        <div style="color:#000000;">Fecha de retiro</div>
+                                    </ion-col>
+                                    <ion-col align="right">
+                                        {{obj[0]}}
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row>
+                                    <ion-col>
+                                        <div style="color:#000000;">Placa</div>
+                                    </ion-col>
+                                    <ion-col align="right">
+                                        {{obj[1]}}
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row>
+                                    <ion-col>
+                                        <div style="color:#000000;">Destino</div>
+                                    </ion-col>
+                                    <ion-col align="right">
+                                        {{obj[2]}}
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row>
+                                    <ion-col>
+                                        <div style="color:#000000;">Peso bruto</div>
+                                    </ion-col>
+                                    <ion-col align="right">
+                                        {{obj[3]}}
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row>
+                                    <ion-col>
+                                        <div style="color:#000000;">Peso tara</div>
+                                    </ion-col>
+                                    <ion-col align="right">
+                                        {{obj[4]}}
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row>
+                                    <ion-col>
+                                        <div style="color:#000000;">Peso neto</div>
+                                    </ion-col>
+                                    <ion-col align="right">
+                                        {{obj[5]}}
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row>
+                                    <ion-col>
+                                        <div style="color:#000000;">Cantidad</div>
+                                    </ion-col>
+                                    <ion-col align="right">
+                                        {{obj[6]}}
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row>
+                                    <ion-col class="search-col1">
+                                        <div style="color:#000000;">Saldo BL</div>
+                                    </ion-col>
+                                    <ion-col align="right">
+                                        {{obj[7]}}
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row>
+                                    <ion-col class="search-col1">
+                                        <div style="color:#000000;">Saldo Kg BL</div>
+                                    </ion-col>
+                                    <ion-col align="right">
+                                        {{obj[8]}}
+                                    </ion-col>
+                                </ion-row>
+                            </ion-grid>
+        
+                        </ion-card>
+        
+                    </div>
+        
+                </div>
+                
+            </div>
+
+        </div>
+        
+        <div *ngIf="content_devolucion">
+
+            <ion-card>
+                <ion-grid>
+                    <ion-row>
+                      <strong style="padding-right: 5px;">Registros encontrados:</strong> {{cant_reg}}
+                    </ion-row>
+                </ion-grid>
+            </ion-card>
+
+            <ion-card *ngFor="let res of list_array_result | slice:0:slice; let i=index">
+                
+                <div class="menu-cont-wrapp space-search">
+                    <ion-grid>
+
+                        <ion-row>                        
+                          <ion-col>
+                              <div style="color:#000000;">BL</div>
+                          </ion-col>
+                          <ion-col align="right">
+                              {{res[0]}}
+                          </ion-col>
+                        </ion-row>
+
+                        <ion-row>
+                          <ion-col>
+                              <div style="color:#000000;">DO/PEDIDOS</div>
+                          </ion-col>
+                          <ion-col align="right">
+                              {{res[1]}}
+                          </ion-col>
+                        </ion-row>
+
+                        <ion-row>
+                          <ion-col>
+                            <div style="color:#000000;">ID del contenedor</div>
+                          </ion-col>
+                          <ion-col align="right">
+                              {{res[2]}}
+                          </ion-col>
+                        </ion-row>
+
+                        <ion-row>
+                          <ion-col>
+                              <div style="color:#000000;">Fec. Lim. devolución</div>
+                          </ion-col>
+                          <ion-col align="right">
+                              {{res[3]}}
+                          </ion-col>
+                        </ion-row>
+                        
+                        <ion-row>
+                          <ion-col>
+                              <div style="color:#000000;">Fecha de devolución</div>
+                          </ion-col>
+                          <ion-col align="right">
+                              {{res[4]}}
+                          </ion-col>                      
+                        </ion-row>
+
+                    </ion-grid>
+                </div>
+      
+          </ion-card>
+
+        </div>
+
+      </div>
+
+      <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+          <ion-infinite-scroll-content
+            loadingSpinner="bubbles"
+            distance="1%"
+            loadingText="Cargando datos...">
+          </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+
+</ion-content>

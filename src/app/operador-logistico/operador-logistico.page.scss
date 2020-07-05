@@ -1,0 +1,17 @@
+:host { // this is the page itself
+	//background-color: green;
+
+	/*ion-toolbar {
+		--background: #3b6bab;
+		--color: white;
+	}*/
+
+	.toolbar-style-1{
+		/*background-color: #3b6bab;
+		color: white;
+		contain: initial;
+		z-index: initial;*/
+		--background: #3b6bab;
+	}
+
+}

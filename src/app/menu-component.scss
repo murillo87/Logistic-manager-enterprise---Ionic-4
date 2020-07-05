@@ -1,0 +1,23 @@
+.active {
+    //--ion-text-color: var(--ion-color-primary);
+    color: #3b6bab;
+ 
+    ion-icon {
+        //--ion-text-color-rgb: var(--ion-color-primary);
+        color: #3b6bab;
+    }
+}
+ 
+.parent-active {
+    //border-bottom: 1px solid;
+    font-weight: 600;
+}
+ 
+.sub-item {
+    padding-left: 20px;
+    font-size: small;
+}
+
+.menu-toggle-hidden {
+    display: block !important;
+}

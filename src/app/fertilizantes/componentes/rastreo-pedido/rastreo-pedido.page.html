@@ -1,0 +1,109 @@
+<ion-header>
+    <div class="seccion-menu2">
+      <ion-buttons slot="start" class="col-head1">
+          <ion-icon style="font-size: 25px;" name="arrow-back" color="primary-contrast" (click)="closeModal()"></ion-icon>
+      </ion-buttons>
+      <div class="col-head2">
+        <div style="color: white;">Agricola</div>
+      </div>
+      <ion-buttons slot="start" class="col-head3">
+      </ion-buttons> 
+    </div>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-row>
+      <ion-col>
+        <div style="color: black;">Rastreo de carga</div>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  <ion-card style="background-color: #f2f2f2;">
+    <ion-grid style="line-height: 2;">
+      <ion-row style="border-bottom: 1px solid lightgray;">
+        <ion-col>
+          <div style="color: black;">Factura</div>
+        </ion-col>
+        <ion-col align="right">
+          {{factura}}
+        </ion-col>
+      </ion-row>
+      <ion-row style="border-bottom: 1px solid lightgray;">
+        <ion-col>
+          <div style="color: black;">Pedido</div>
+        </ion-col>
+        <ion-col align="right">
+          {{pedido}}
+        </ion-col>
+      </ion-row>
+      <ion-row style="border-bottom: 1px solid lightgray;">
+        <ion-col>
+          <div style="color: black;">Cantidad</div>
+        </ion-col>
+        <ion-col align="right">
+          {{cantidad}}
+        </ion-col>
+      </ion-row>
+      <ion-row style="border-bottom: 1px solid lightgray;">
+        <ion-col>
+          <div style="color: black;">Entregado</div>
+        </ion-col>
+        <ion-col align="right">
+          {{entregado}}
+        </ion-col>
+      </ion-row>
+      <ion-row style="border-bottom: 1px solid lightgray;">
+        <ion-col>
+          <div style="color: black;">Saldo</div>
+        </ion-col>
+        <ion-col align="right">
+          {{saldo}}
+        </ion-col>
+      </ion-row>
+      <ion-row style="border-bottom: 1px solid lightgray;">
+        <ion-col>
+          <div style="color: black;">Estado</div>
+        </ion-col>
+        <ion-col align="right">
+          {{estado}}
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <ion-card>
+
+      <ion-grid>
+          <ion-row class="">  
+            <div class="menu-cont-wrapp" style="width: 100%;">
+              <div style="color:black; font-weight: 600;">
+                Actividad reciente del despacho
+              </div>
+            </div>         
+          </ion-row>
+      </ion-grid>
+
+      <ion-grid>
+        <div *ngFor="let res of list_array_result" class="space-data-date">
+            <ion-row>
+              <ion-col>
+                  <img style="width: 22px; height: 22px; display: inline-block; vertical-align: middle;" src="/assets/icon/circle.png">
+                  <div class="date-pedido">{{res[0]}}</div>
+              </ion-col>                
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <div style="margin-left: 32px;">
+                  {{res[1]}}
+                </div>
+              </ion-col>
+            </ion-row>
+        </div>
+      </ion-grid>
+
+  </ion-card>
+
+</ion-content>

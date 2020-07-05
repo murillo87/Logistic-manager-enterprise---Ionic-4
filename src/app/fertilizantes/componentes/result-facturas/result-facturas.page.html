@@ -1,0 +1,61 @@
+<ion-header>
+  <div class="seccion-menu2">
+      <ion-buttons slot="start" class="col-head1">
+          <ion-icon style="font-size: 25px;" name="arrow-back" color="primary-contrast" (click)="backSearch()"></ion-icon>
+      </ion-buttons>
+      <div class="col-head2">
+        <div style="color: white;">Resultados</div>
+      </div>
+      <ion-buttons slot="start" class="col-head3">
+      </ion-buttons>
+    </div>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-grid>
+        <ion-row>
+          <strong style="padding-right: 5px;">Registros encontrados:</strong> {{cant_reg}}
+        </ion-row>
+    </ion-grid>
+  </ion-card>    
+
+    <div class="divider-facturas" *ngFor="let res of list_array_result | slice:0:slice; let i=index">
+      <ion-grid class="content-facturas" style="line-height: 1.5;">
+        <ion-row>
+          <ion-col>
+            <div style="color: black;">Factura #{{i+1}}</div>
+          </ion-col>
+          <ion-col align="right">
+            <img src="/assets/icon/download.png" class="img-facturas" (click)="presentAlertConfirm(res[1])">
+          </ion-col>
+        </ion-row>
+        <ion-row style="border-bottom: 1px solid lightgray;">
+          <ion-col>
+            <div style="color: black;">Fecha de creación</div>
+          </ion-col>
+          <ion-col align="right">
+            <div style="color: #4e4e4e;">{{res[0]}}</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <div style="color: black;">Valor a pagar</div>
+          </ion-col>
+          <ion-col align="right">
+            <div style="color: #4e4e4e;">{{res[2] | currency}}</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>      
+    </div>
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content
+          loadingSpinner="bubbles"
+          distance="1%"
+          loadingText="Cargando datos...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+</ion-content>

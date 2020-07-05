@@ -1,0 +1,88 @@
+  <ion-header>
+    <div class="seccion-menu2">
+      <ion-buttons slot="start" class="col-head1">
+          <ion-icon style="font-size: 25px;" name="arrow-back" color="primary-contrast" (click)="closeModal()"></ion-icon>
+      </ion-buttons>
+      <div class="col-head2">
+        <div style="color: white;">Filtro</div>
+      </div>
+      <ion-buttons slot="start" class="col-head3">
+      </ion-buttons>
+    </div>
+  </ion-header>
+  
+  <ion-content>
+
+      <ion-card>
+        <div>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                  <b style="color: #4d4d4d;">Número de la factura</b>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </ion-card>
+       
+      <ion-grid>
+          <ion-row>
+            <input [(ngModel)]="numero_bl" class="number-bl" placeholder="Ingrese el número"/>
+          </ion-row>
+      </ion-grid>
+  
+      <ion-card style="border-top: 12px solid #dcdfe4;">
+      <ion-grid>
+            <div class="menu-cont-wrapp">
+              <div class="search-col1">
+                  <b style="color: #4d4d4d; margin-left: 5px;">Fecha</b>
+              </div>
+              <!--<div class="search-col2">
+                  <ion-datetime style="color: #4d4d4d; font-weight: bold;" 
+                                displayFormat="MMM" 
+                                [(ngModel)]="myDate">
+                  </ion-datetime>
+              </div>-->
+            </div>
+
+            <hr class="divider-search">
+
+            <div class="menu-cont-wrapp">
+              <ion-grid>
+                <ion-row>
+                  <ion-col class="search-col1" align="center">
+                      <ion-label>Desde</ion-label>
+                      <ion-datetime [(ngModel)]="date_init" display-format="DD, MM, YYYY"></ion-datetime>
+                  </ion-col>
+                  <ion-col class="search-col2" style="text-align: center !important;">
+                      <ion-label>Hasta</ion-label>
+                      <ion-datetime [(ngModel)]="date_end" display-format="DD, MM, YYYY"></ion-datetime>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+
+        </ion-grid>
+      </ion-card> 
+  
+  </ion-content>
+
+  <ion-footer>
+
+      <ion-row style="align-items: baseline;">
+          <ion-col>
+            <div class="btn-cancel">
+              <button class="btn-search" (click)="closeModal()" style="background-color: white; color: black;">
+                Cancelar
+              </button>
+            </div>
+          </ion-col>
+          <ion-col>
+            <button class="btn-search" (click)="btnSearch()" style="background-color: #81b046; color: white;">
+              Aplicar
+            </button>
+          </ion-col>
+      </ion-row> 
+
+  </ion-footer>
+  

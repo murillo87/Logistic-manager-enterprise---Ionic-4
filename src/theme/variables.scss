@@ -1,0 +1,326 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+/** Ionic CSS Variables **/
+:root {
+  /** primary **/
+  --ion-color-primary: #3b6bab;
+  --ion-color-primary-rgb: 56, 128, 255;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #3171e0;
+  --ion-color-primary-tint: #4c8dff;
+
+  /** secondary **/
+  --ion-color-secondary: #81b046;
+  --ion-color-secondary-rgb: 12, 209, 232;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #0bb8cc;
+  --ion-color-secondary-tint: #24d6ea;
+
+  /** tertiary **/
+  --ion-color-tertiary: #008d3e;
+  --ion-color-tertiary-rgb: 112, 68, 255;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #633ce0;
+  --ion-color-tertiary-tint: #7e57ff;
+
+  /** success **/
+  --ion-color-success: #3a673c;
+  --ion-color-success-rgb: 16, 220, 96;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #0ec254;
+  --ion-color-success-tint: #28e070;
+
+  /** warning **/
+  --ion-color-warning: #ffce00;
+  --ion-color-warning-rgb: 255, 206, 0;
+  --ion-color-warning-contrast: #ffffff;
+  --ion-color-warning-contrast-rgb: 255, 255, 255;
+  --ion-color-warning-shade: #e0b500;
+  --ion-color-warning-tint: #ffd31a;
+
+  /** danger **/
+  --ion-color-danger: #f04141;
+  --ion-color-danger-rgb: 245, 61, 61;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #d33939;
+  --ion-color-danger-tint: #f25454;
+
+  /** dark **/
+  --ion-color-dark: #222428;
+  --ion-color-dark-rgb: 34, 34, 34;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #1e2023;
+  --ion-color-dark-tint: #383a3e;
+
+  /** medium **/
+  --ion-color-medium: #989aa2;
+  --ion-color-medium-rgb: 152, 154, 162;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #86888f;
+  --ion-color-medium-tint: #a2a4ab;
+
+  /** light **/
+  --ion-color-light: #f4f5f8;
+  --ion-color-light-rgb: 244, 244, 244;
+  --ion-color-light-contrast: #000000;
+  --ion-color-light-contrast-rgb: 0, 0, 0;
+  --ion-color-light-shade: #d7d8da;
+  --ion-color-light-tint: #f5f6f9;
+
+  /** Colors Site **/
+  --ion-color-seccion1: #3b6bab;
+  --ion-color-seccion2: #81b046;
+  --ion-color-seccion3: #008d3e;
+  --ion-color-loginbtn: #3a673c;
+
+  /** Header Content Style **/
+  .col-head1, .col-head3{
+    display: inline-block;
+    vertical-align: middle;
+    width: 10%;
+  }
+  .col-head2{
+    display: inline-block;
+    font-size: 20px;
+    text-align: left;
+    vertical-align: middle;
+    width: 78%;
+  }
+  .menu-cont-wrapp{
+    align-items: center;
+		display: flex;
+  	flex-wrap: wrap;
+  }
+  .seccion-menu1{
+    background-color: #3b6bab;
+    color: white;
+    padding: 10px 0;
+  }
+  .seccion-menu2{
+    background-color: #81b046;
+    color: white;
+    padding: 10px 0;
+  }
+  .seccion-menu3{
+    background-color: #008d3e;
+    color: white;
+    padding: 10px 0;
+  }
+	.cont-1{
+		width: 7vw;
+	}
+	.cont-2{
+		width: 78vw;
+	}
+	.cont-3{
+		width: 5vw;
+  }
+  /** End Header **/
+
+  /** Tabs Site Style **/
+  .grid-tabs{
+    text-align: center;
+  }
+  .txt-tabs{
+    color: #4e4e4e;
+    font-size: 12px;
+  }
+  .tabs-col{
+    width: 30vw;
+  }
+  .classNameTab{
+    background-color: #3b6bab;
+    border-radius: 20px;    
+    color: white;
+    padding: 5px 0px;
+  }
+
+  $text-color: #000099;
+
+  .img-tab{
+    height: 14px;
+    width: auto;
+  }
+
+  .col-log-tab{
+    width: 9vw;
+  }
+
+  .col-txt-tab{
+    width: 20vw;
+  }
+  /** End Style **/
+
+  /** Detail Menu Style **/ 
+  .menu-detail1{
+    width: 10vw;
+  }
+  .menu-detail2{
+    width: 90vw;
+  }
+  .cont-tabs-det{
+    background-color: #3b6bab;
+    color: white;
+    position: relative;
+    text-align: center;    
+    top: -1px;    
+  }
+  .obs-det-ope{
+    background-color: #3b6bab;
+    color: white;
+    font-weight: bold;
+    padding: 15px;
+    text-align: center;
+    width: 100%;        
+  }
+  /** End Style **/
+
+  /** Search Style **/
+  .space-search{
+    line-height: 2.5;
+  }
+  .search-col1{
+		width: 45vw;
+	}
+	.search-col2{
+    text-align: right;
+		width: 45vw;
+  }
+  .number-bl{
+    border: 0;
+    border-top: 1px solid lightgrey;
+    margin: 1px;
+    padding: 7px;
+    width: 100%;
+  }
+  .divider-search{
+    border: 1px solid lightgray;
+    margin-bottom: 10px;
+  }
+  .content-rastreo{
+    margin: 0 auto;
+    padding: 5px;
+    width: 85%;
+  }
+  .btn-search{
+    border: 1px solid lightgrey;
+    border-radius: 7px;
+    padding: 13px 0;    
+    text-transform: uppercase;
+    width: 100%;
+  }
+  /** End Style **/
+  /* Fertilizantes Style */
+  .add-ped-style{
+    background-color: #81b046;
+    color: white;
+    font-weight: bold;
+    margin-top: 30px;
+    padding: 15px;
+    text-align: center;
+    width: 100%;        
+  }
+  /*.alert-radio-icon.sc-ion-alert-md {
+    margin-left: -10px !important;
+  }*/
+  .alert-radio-label.sc-ion-alert-md {
+    margin-left: -20px !important;
+    font-size: 12px !important;
+  }
+  .sc-ion-alert-md-h {
+    --min-width: 90% !important;
+  }
+  /** End Fertilizantes **/
+  /** Facturas Style **/
+  .divider-facturas{
+    border-top: 12px solid #dcdfe4;
+  }
+  /** End Facturas **/
+  /** Style Detail Nominaciones **/
+  .menu-nominacion1{
+    display: inline-flex;
+    justify-content: center;
+    vertical-align: middle;
+    width: 10%;    
+  }
+  .menu-nominacion2{
+    display: inline-flex;
+    vertical-align: middle;
+    width: 80%;
+  }
+
+  .menu-nom-det{
+    display: inline-flex;
+    vertical-align: middle;
+    width: 90%;
+  }
+
+  .search-nominacion{
+    display: inline-flex;
+    font-size: 25px;
+    vertical-align: middle;
+    width: 8%;
+  }
+  .backgrund-detail{
+    background-color: #f2f2f2;
+    line-height: 1.5;
+  }
+  .border-line-detail{
+    border-bottom: 1px solid lightgray;
+  }
+  .bor-botom-nom{
+    border-bottom: 12px solid #dcdfe4;
+  }
+  /** End Detail Nominaciones **/
+  /** Proceso Logistico Style **/
+  .content-proceso{
+    margin: 0 auto;
+    width: 98%;
+  }
+  .pro-log-col1{
+    color: black;
+    display: inline-block;
+    width: 80%;
+  }
+  .pro-log-col2{
+    display: inline-block;
+    width: 20%;
+    text-align: right;
+  }
+  .link-pro-log{
+    border-bottom: 1px solid;
+    color: #028c3e;
+    display: inline;
+  }
+  /** End Proceso **/
+  /** Contenedores Style **/
+  .contenedores-state{
+    background-color: white;
+    border: 1px solid #6b8fc1;
+  }
+  .menu-right{
+    margin-left: -10px;
+  }
+  .select-contenedores{
+    color: #008d3e;
+    border-bottom: 1px solid;
+    display: initial;
+  }
+  /** End Contenedores **/
+  /** Select Size **/
+  .alert-radio-label.sc-ion-alert-md {
+    font-size: 13px;
+  }
+  /*ion-select{
+    max-width: 100% !important;
+  }*/
+  /** End Select **/
+}

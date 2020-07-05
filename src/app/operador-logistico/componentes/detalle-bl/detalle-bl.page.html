@@ -1,0 +1,274 @@
+<ion-header>
+  <div class="seccion-menu1">
+      <!--<ion-buttons slot="start">
+          <ion-back-button defaultHref="operador-logistico"></ion-back-button>
+      </ion-buttons>-->
+      <div class="">
+        <ion-icon style="font-size: 30px; padding-right: 10px; vertical-align: middle;" 
+                  name="arrow-back" 
+                  color="primary-contrast" 
+                  (click)="backSearch()">
+        </ion-icon>Detalle del BL
+      </div> 
+  </div>
+  <div class="cont-tabs-det">
+    <ion-grid>
+      <ion-row>
+        <ion-col [ngClass]='classNameTab1' (click)="openTab(this, 'Tab1')" id="defaultOpen">
+          Estados
+        </ion-col>
+        <ion-col [ngClass]='classNameTab2' (click)="openTab(this, 'Tab2')">
+          Contenedores
+        </ion-col>
+        <ion-col [ngClass]='classNameTab3' (click)="openTab(this, 'Tab3')">
+          Rastreo
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-header>
+
+<ion-content>
+
+  <div padding>
+    <b style="color: #4d4d4d;">
+      BL {{ id }}
+    </b>
+  </div>
+
+    <div id="Tab1" class="tabcontent">
+
+      <div padding>
+          <b style="color: #4d4d4d;">
+            Estado del BL
+          </b>
+          <div style="color: #7c7c7c;">
+            Contenedores trasladados
+          </div>
+      </div>
+
+      <ion-card *ngFor="let res of list_array_result">
+
+        <div class="menu-cont-wrapp space-search">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                  <div style="color:#000000;">DO</div>
+              </ion-col>
+              <ion-col align="right">
+                {{res[1]}}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                  <div style="color:#000000;">Contenedores</div>
+              </ion-col>
+              <ion-col align="right">
+                {{res[3]}}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                  <div style="color:#000000;">Fecha de arribo</div>
+              </ion-col>
+              <ion-col align="right">
+                {{res[4]}}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <div style="color:#000000;">Fecha de ingreso</div>
+              </ion-col>
+              <ion-col align="right">
+                {{res[5]}}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                  <div style="color:#000000;">Motonave</div>
+              </ion-col>
+              <ion-col align="right">
+                {{res[6]}}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                  <div style="color:#000000;">Producto</div>
+              </ion-col>
+              <ion-col align="right">
+                {{res[7]}}
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+
+      </ion-card>
+
+      <button (click)="addObservation()" class="obs-det-ope">
+        Agregar Observación
+      </button>
+
+    </div>
+
+    <div id="Tab2" class="tabcontent">
+
+        <ion-card *ngFor="let res of list_array_cont"> 
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div style="color: black;">Contenedor</div>
+                </ion-col>
+                <ion-col align="right">
+                  <div style="color: #3e6aaa; 
+                  border-bottom: 1px solid; 
+                  display: initial;" 
+                  (click)="detailBL(res[0])">
+
+                    {{res[0]}} 
+                    
+                  </div> 
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <div style="color: black;">último movimiento</div>
+                </ion-col>
+                <ion-col align="right">
+                  {{res[1]}}
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <div style="color: black;">último estado</div>                
+                </ion-col>
+                <ion-col align="right">
+                  {{res[2]}}
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+        </ion-card>
+
+    </div>
+
+    <div id="Tab3" class="tabcontent">
+
+        <ion-card *ngFor="let res of list_array_track">
+            <div class="menu-cont-wrapp">
+                <div>
+                  <div style="color: #006bb3;">{{res[1]}}</div>
+                </div>
+            </div>
+
+            <hr>
+
+            <ion-row>
+              <div>
+                <div class="menu-cont-wrapp">
+                    <div>
+                      <ion-img 
+                        style="width: 25px; height: 25px;" 
+                        src="/assets/icon/bl-icon.png">
+                      </ion-img>
+                    </div>
+
+                    <div style="padding-left: 7px;">
+                      <b>
+                        {{res[0]}}
+                      </b>
+                    </div>
+                </div>
+              </div>
+            </ion-row>
+            <ion-row>
+              <div class="content-rastreo">
+                {{res[2]}}
+              </div>
+            </ion-row>
+        </ion-card>
+
+        <!--<ion-card>
+            <div class="menu-cont-wrapp">
+                <div>
+                  <ion-img 
+                    style="width: 25px; height: 25px;" 
+                    src="/assets/icon/bl2.png">
+                  </ion-img>
+                </div>
+                <div>
+                  <div style="color: #006bb3;">En Proceso</div>
+                </div>
+            </div>
+
+            <hr>
+
+            <ion-row>
+              <div>
+                <div class="menu-cont-wrapp">
+                    <div>
+                      <ion-img 
+                        style="width: 25px; height: 25px;" 
+                        src="/assets/icon/bl-icon.png">
+                      </ion-img>
+                    </div>
+
+                    <div>
+                      <b>
+                        2019/07/09 12:34
+                      </b>
+                    </div>
+                </div>
+              </div>
+            </ion-row>
+            <ion-row>
+              <div class="content-rastreo">
+                gdgbdgd
+              </div>
+            </ion-row>
+        </ion-card>
+
+        <ion-card>
+            <div class="menu-cont-wrapp">
+                <div>
+                  <ion-img 
+                    style="width: 25px; height: 25px;" 
+                    src="/assets/icon/bl3.png">
+                  </ion-img>
+                </div>
+                <div>
+                  <div style="color: #006bb3;">Proceso finalizado</div>
+                </div>
+            </div>
+
+            <hr>
+
+            <ion-row>
+              <div>
+                <div class="menu-cont-wrapp">
+                    <div>
+                      <ion-img 
+                        style="width: 25px; height: 25px;" 
+                        src="/assets/icon/bl-icon.png">
+                      </ion-img>
+                    </div>
+
+                    <div>
+                      <b>
+                        2019/07/09 12:34
+                      </b>
+                    </div>
+                </div>
+              </div>
+            </ion-row>
+            <ion-row>
+              <div class="content-rastreo">
+                gdgbdgd
+              </div>
+            </ion-row>
+        </ion-card>-->
+    </div>
+
+</ion-content>
+
+<ion-footer>
+  
+</ion-footer>

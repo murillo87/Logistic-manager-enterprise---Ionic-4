@@ -1,0 +1,81 @@
+<ion-header>
+  <div class="seccion-menu2">
+    <ion-buttons slot="start" class="col-head1">
+        <ion-img style="width: 30px; height: 30px;" src="/assets/icon/log2.jpg"></ion-img>
+    </ion-buttons>
+    <div class="col-head2">
+      <div style="color: white;">Agricola</div>
+    </div>
+    <ion-buttons slot="start" class="col-head3">
+      <ion-menu-button style="color: white;"></ion-menu-button>
+    </ion-buttons> 
+  </div>
+</ion-header>
+
+<ion-content>
+
+    <ion-grid>
+        <ion-row>  
+          
+            <div class="menu-cont-wrapp" style="padding: 10px;">
+                <div class="search-col1">
+                    <div style="color:#4d4d4d; font-weight: 600;">
+                      Cupo de crédito
+                    </div>
+                </div>
+                <div class="search-col2">
+                  <img style="width: 25px; height: 25px;" (click)="ferOptions()" src="/assets/icon/fer-set.png">
+    
+                  <div class="link-fertilizantes" *ngIf="options">
+                      <!--<hr/>
+                      <a routerLink="/pedidos-fertilizantes">Solicitar un pedido</a><img style="width: 18px; height: 18px;" src="/assets/icon/sol_pedido.png">-->
+                      <hr/>
+                      <a (click)="openModal()">Buscar</a><img style="width: 18px; height: 18px;" src="/assets/icon/bus_fertilizantes.png">
+                  </div> 
+    
+                </div>          
+            </div>
+
+        </ion-row>
+    </ion-grid>
+
+    <div class="divider-facturas" *ngFor="let res of list_array_result | slice:0:slice; let i=index">
+      <ion-grid class="content-facturas" style="line-height: 1.5;">
+        <ion-row>
+          <ion-col>
+            <div style="color: black;">Factura #{{i+1}}</div>
+          </ion-col>
+          <ion-col align="right">
+            <div *ngIf="res[3] === 'X'">
+              <img src="/assets/icon/download.png" class="img-facturas" (click)="presentAlertConfirm(res[1])">
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row style="border-bottom: 1px solid lightgray;">
+          <ion-col>
+            <div style="color: black;">Fecha de creación</div>
+          </ion-col>
+          <ion-col align="right">
+            <div style="color: #4e4e4e;">{{res[0]}}</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <div style="color: black;">Valor a pagar</div>
+          </ion-col>
+          <ion-col align="right">
+            <div style="color: #4e4e4e;">{{res[2] | currency}}</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>      
+    </div>
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content
+          loadingSpinner="bubbles"
+          distance="1%"
+          loadingText="Cargando datos...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+</ion-content>

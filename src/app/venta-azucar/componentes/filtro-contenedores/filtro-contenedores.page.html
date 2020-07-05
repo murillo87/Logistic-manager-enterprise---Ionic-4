@@ -1,0 +1,49 @@
+<ion-header>
+  <div class="seccion-menu3">
+      <ion-buttons slot="start" class="col-head1">
+          <ion-icon style="font-size: 25px;" name="arrow-back" color="primary-contrast" (click)="cancelSearch()"></ion-icon>
+      </ion-buttons>
+      <div class="col-head2">
+        <div style="color: white;">Filtro contenedores</div>
+      </div>
+      <ion-buttons slot="start" class="col-head3">
+        <ion-menu-button style="color: white;"></ion-menu-button>
+      </ion-buttons>
+    </div>
+</ion-header>
+
+<ion-content>
+
+    <ion-card>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+              <b style="color: #4d4d4d;">Número Booking</b>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-row>
+        <input style="padding: 15px 10px;" autofocus="true" [(ngModel)]="numero" class="number-bl" placeholder="Ingrese el número"/>
+      </ion-row>
+    </ion-card>
+
+</ion-content>
+
+<ion-footer>
+
+    <ion-row style="align-items: baseline;">
+        <ion-col>
+          <div class="btn-cancel">
+            <button class="btn-search" (click)="cancelSearch()" style="background-color: white; color: black;">
+              Cancelar
+            </button>
+          </div>
+        </ion-col>
+        <ion-col>
+          <button class="btn-search" (click)="btnSearch()" style="background-color: #3a673c; color: white;">
+            Aplicar
+          </button>
+        </ion-col>
+    </ion-row>
+
+</ion-footer>

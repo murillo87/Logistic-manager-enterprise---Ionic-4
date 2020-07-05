@@ -1,0 +1,43 @@
+:host{
+
+    .link-fertilizantes a{                
+        color: #80af45;
+        padding-right: 5px;
+        text-decoration: none;
+    }
+    .link-fertilizantes img{
+        vertical-align: middle;
+    }
+    .date-pedido{
+        font-weight: 600;
+        padding-left: 10px;
+    }
+    .cont-ped-date{
+        display: block;
+        width: 100%;
+        padding: 5px 35px;
+    }
+    .space-data-date{
+       margin: 15px 0;
+    }
+
+    .content-facturas{
+        font-size: 15px;
+        margin: 0 auto;
+        width: 95%;        
+    }
+    .link-fertilizantes a{                
+        color: #80af45;
+        padding-right: 5px;
+        text-decoration: none;
+    }
+    .link-fertilizantes img{
+            vertical-align: middle;
+    }
+    .link-detail-ped{
+        color: #80af45;
+        border-bottom: 1px solid;
+        display: initial;
+    }
+
+}

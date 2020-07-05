@@ -1,0 +1,163 @@
+<ion-header>
+  <div class="seccion-menu1">
+    <ion-buttons slot="start" class="col-head1">
+        <ion-img style="width: 30px; height: 30px;" src="/assets/icon/log1.jpg"></ion-img>
+    </ion-buttons>
+    <div class="col-head2">
+      <div style="color: white;">Operador logistico</div>
+    </div>
+    <ion-buttons slot="start" class="col-head3">
+      <ion-menu-button style="color: white;"></ion-menu-button>
+    </ion-buttons> 
+  </div>
+</ion-header>
+
+<ion-content>
+
+    <ion-searchbar routerLink="/filtro-operador-bl/existencia-mercancia" placeholder="Existencia de mercancia">
+    </ion-searchbar>
+
+    <ion-card *ngFor="let res of list_array_result | slice:0:slice; let i=index" style="border: 1px solid #6b8fc1;">
+
+        <ion-grid style="background-color: #f2f2f2; margin-bottom: 10px;">
+            <ion-row>
+              <ion-col size="10">
+                <div style="color: black;">BL: {{res[0]}}</div>
+              </ion-col>
+              <ion-col size="2" align="right">
+                <!--<div (click)="res.open = !res.open" class="menu-cont-wrapp" style="justify-content: center; margin-bottom: 10px;">
+                  <div style="color: #3d6aab; padding-right: 7px;">
+                    Ver información
+                  </div>
+                  <div>
+                    <img class="img-tab" src="/assets/icon/12-op.png" *ngIf="!res.open"/>
+                    <img class="img-tab" src="/assets/icon/up_12.png" *ngIf="res.open"/>
+                  </div>            
+                </div>-->
+                <div (click)="res.open = !res.open">
+                  <img class="img-tab" style="display: inline-block;" src="/assets/icon/12-op.png" *ngIf="!res.open"/>
+                  <img class="img-tab" style="display: inline-block;" src="/assets/icon/up_12.png" *ngIf="res.open"/>
+                </div>  
+              </ion-col>
+            </ion-row>
+        </ion-grid>
+
+      <div *ngIf="res.open" [className]="'dataShow' + res[1]">
+          
+          <ion-grid style="background-color: #f2f2f2;">
+            <ion-row>
+                <ion-col>
+                    <div style="color:#000000;">DO</div>
+                </ion-col>
+                <ion-col align="right">
+                    {{res[1]}}
+                </ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <ion-grid class="space-search">
+                <ion-row>
+                    <ion-col>
+                        <div style="color:#000000;">Fecha Ingreso a deposito</div>
+                    </ion-col>
+                    <ion-col align="right">
+                        {{res[2]}}
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                      <div style="color:#000000;">Días permanencia M/cia</div>
+                    </ion-col>
+                    <ion-col align="right">
+                        {{res[3]}}
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <div style="color:#000000;">Lote</div>
+                    </ion-col>
+                    <ion-col align="right">
+                        {{res[4]}}
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <div style="color:#000000;">Producto</div>
+                    </ion-col>
+                    <ion-col align="right">
+                        {{res[5]}}
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                      <div style="color:#000000;">Cantidad Contenedores</div>
+                  </ion-col>
+                  <ion-col align="right">
+                        {{res[6]}}
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                      <div style="color:#000000;">U/M</div>
+                  </ion-col>
+                  <ion-col align="right">
+                        {{res[7]}}
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                      <div style="color:#000000;">Recibido</div>
+                  </ion-col>
+                  <ion-col align="right">
+                        {{res[8]}}
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                      <div style="color:#000000;">Despacho</div>
+                  </ion-col>
+                  <ion-col align="right">
+                        {{res[9]}}
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                      <div style="color:#000000;">Averias</div>
+                  </ion-col>
+                  <ion-col align="right">
+                        {{res[10]}}
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                      <div style="color:#000000;">Saldo</div>
+                  </ion-col>
+                  <ion-col align="right">
+                        {{res[11]}}
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                      <div style="color:#000000;">Observaciones</div>
+                  </ion-col>
+                </ion-row>
+                <ion-row>                    
+                    <ion-col>
+                        {{res[12]}}
+                    </ion-col>
+                </ion-row>    
+          </ion-grid>
+
+      </div>          
+
+    </ion-card>
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content
+          loadingSpinner="bubbles"
+          distance="1%"
+          loadingText="Cargando datos...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+</ion-content>

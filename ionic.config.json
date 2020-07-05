@@ -1,0 +1,7 @@
+{
+  "name": "ciamsa_app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

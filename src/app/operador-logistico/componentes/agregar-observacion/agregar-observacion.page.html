@@ -1,0 +1,40 @@
+<ion-header>
+  <div class="seccion-menu1">
+    <ion-buttons slot="start" class="col-head1">
+        <ion-icon style="font-size: 25px;" name="arrow-back" color="primary-contrast" (click)="closeModal()"></ion-icon>
+    </ion-buttons>
+    <div class="col-head2">
+        <div style="color: white;">Rastreo de carga</div>
+    </div>
+  </div>
+</ion-header>
+  
+  <ion-content padding>
+
+    <ion-grid>
+
+      <ion-row>
+          <ion-col>
+              <ion-textarea rows="7" [(ngModel)]="observation" placeholder="Escribe tus observaciones aquí."></ion-textarea>
+          </ion-col>
+      </ion-row>
+
+      <ion-row style="align-items: baseline;">
+        <ion-col>
+          <div class="btn-cancel">
+            <button class="btn-search" (click)="closeModal()" style="background-color: white; color: black;">
+              CANCELAR
+            </button>
+          </div>
+        </ion-col>
+        <ion-col>
+          <button class="btn-search" (click)="btnSearch()" style="background-color: #017aed; color: white;">
+            AGREGAR
+          </button>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+
+  </ion-content>
+ 

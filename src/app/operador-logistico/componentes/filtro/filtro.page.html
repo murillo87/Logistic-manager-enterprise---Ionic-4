@@ -1,0 +1,142 @@
+<ion-header>
+  <div class="seccion-menu1">
+    <ion-buttons slot="start" class="col-head1">
+        <ion-icon style="font-size: 25px;" name="arrow-back" color="primary-contrast" (click)="backSearch()"></ion-icon>
+    </ion-buttons>
+    <div class="col-head2">
+      <div style="color: white;">Filtro</div>
+    </div>
+    <ion-buttons slot="start" class="col-head3">
+      <ion-menu-button style="color: white;"></ion-menu-button>
+    </ion-buttons>
+  </div>
+</ion-header>
+
+<!--<div class="seccion-menu1">
+    <ion-buttons slot="start" class="menu-nominacion1">
+        <ion-back-button defaultHref="operador-logistico"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="menu-nominacion2"><div style="color: white;">Filtro</div></ion-title> 
+</div>-->
+
+<ion-content>
+    <ion-card>
+      <div>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+                <b style="color: #4d4d4d;">Detalle del BL</b>
+            </ion-col>
+          </ion-row>
+        </ion-grid> 
+        
+        <ion-grid>
+            <ion-list radio-group>
+              <ion-radio-group [(ngModel)]="radio_search">
+            
+                <ion-item>
+                  <ion-label>En proceso</ion-label>
+                  <ion-radio value="PROCESO"></ion-radio>
+                </ion-item>
+            
+                <ion-item>
+                  <ion-label>Proceso finalizado</ion-label>
+                  <ion-radio value="PROC_FINAL"></ion-radio>
+                </ion-item>
+            
+                <ion-item>
+                  <ion-label>BL en transito</ion-label>
+                  <ion-radio value="TRANSITO"></ion-radio>
+                </ion-item>
+      
+              </ion-radio-group>
+            </ion-list>
+        </ion-grid>
+      </div>
+    </ion-card>
+     
+    <ion-card>
+        <div>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                  <b style="color: #4d4d4d;">Buscar por</b>
+              </ion-col>
+            </ion-row>
+          </ion-grid> 
+          <ion-grid>
+            <ion-list>
+                <ion-radio-group [(ngModel)]="radio_detail">
+              
+                  <ion-item>
+                    <ion-label>BL</ion-label>
+                    <ion-radio value="BL"></ion-radio>
+                  </ion-item>
+              
+                  <ion-item>
+                    <ion-label>DO</ion-label>
+                    <ion-radio value="DO"></ion-radio>
+                  </ion-item>
+        
+                </ion-radio-group>
+            </ion-list>
+          </ion-grid>
+        </div>
+        <ion-row>
+          <input style="padding: 15px 10px;" [(ngModel)]="numero_bl" class="number-bl" placeholder="Ingrese el número"/>
+        </ion-row>
+    </ion-card>
+
+     <ion-card>
+      <ion-grid>
+            <div class="menu-cont-wrapp">
+              <div class="">
+                  <b style="color: #4d4d4d; margin-left: 5px;">Fecha</b>
+              </div>
+              <!--<div class="search-col2">
+                  <ion-datetime style="color: #4d4d4d; font-weight: bold;" 
+                                displayFormat="MMM" 
+                                [(ngModel)]="myDate">
+                  </ion-datetime>
+              </div>-->
+            </div>
+
+            <hr class="divider-search">
+
+            <div class="menu-cont-wrapp">
+              <ion-grid>
+                <ion-row>
+                  <ion-col align="center">
+                      <ion-label>Desde</ion-label>
+                      <ion-datetime [(ngModel)]="date_init" display-format="DD, MM, YYYY"></ion-datetime>
+                  </ion-col>
+                  <ion-col class="search-col2" style="text-align: center !important;">
+                      <ion-label>Hasta</ion-label>
+                      <ion-datetime [(ngModel)]="date_end" display-format="DD, MM, YYYY"></ion-datetime>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+      </ion-grid>
+     </ion-card>    
+
+</ion-content>
+
+<ion-footer>
+
+    <ion-row style="align-items: baseline;">
+        <ion-col>
+          <div class="btn-cancel">
+            <button class="btn-search" (click)="cancelSearch()" style="background-color: white; color: black;">
+              Cancelar
+            </button>
+          </div>
+        </ion-col>
+        <ion-col>
+          <button class="btn-search" (click)="btnSearch()" style="background-color: #3b6bab; color: white;">
+            Aplicar
+          </button>
+        </ion-col>
+    </ion-row>
+
+</ion-footer>

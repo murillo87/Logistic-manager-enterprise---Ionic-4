@@ -1,0 +1,134 @@
+<div class="seccion-menu2">
+    <ion-buttons slot="start" class="menu-nominacion1">
+        <ion-icon style="font-size: 25px;" name="arrow-back" color="primary-contrast" (click)="closeModal()"></ion-icon>
+    </ion-buttons>
+    <ion-title class="menu-nominacion2"><div style="color: white;">Detalle del pedido</div></ion-title> 
+</div>
+
+<ion-content>
+
+    <!--<ion-card>
+        <ion-grid>
+    
+          <ion-item>
+            <ion-row class="menu-cont-wrapp" style="font-size: 13px;">
+              <ion-col size="12">
+                <b>{{pro_data_name}}</b>
+              </ion-col>
+              <ion-col size="10">
+                  <b>Formade pago:</b> {{pay_data_value}}
+                  <br/>
+                  <b>Presentación:</b> {{unid}}
+                  <br/>
+                  <b>Cantidad:</b> {{val_cant}}
+              </ion-col>
+              <ion-col size="2" align="right">
+                  <ion-icon (click)="delItem()" name="trash" color="success" style="zoom:2.0;"></ion-icon>
+              </ion-col>
+              <ion-col size="12">
+                <b>Precio de lista:</b> ${{price | number}}
+              </ion-col>
+            </ion-row>  
+          </ion-item>
+    
+        </ion-grid>
+    </ion-card>-->
+
+    <ion-card *ngFor="let res of result_arr | slice:0:slice; let i=index">
+      <ion-grid>
+  
+        <ion-item>
+          <ion-row class="menu-cont-wrapp" style="font-size: 13px;">
+            <ion-col size="12">
+              <b>{{res['pro_data_name']}}</b> #{{i+1}}
+            </ion-col>
+            <ion-col size="10">
+                <b>Formade pago:</b> {{res['pay_data_value']}}
+                <br/>
+                <b>Presentación:</b> {{res['unid']}}
+                <br/>
+                <b>Cantidad:</b> {{res['val_cant']}}
+            </ion-col>
+            <ion-col size="2" align="right">
+                <ion-icon (click)="delItem(res['val_ind'])" name="trash" color="success" style="zoom:2.0;"></ion-icon>
+            </ion-col>
+            <ion-col size="12">
+              <b>Precio de lista:</b> ${{res['price'] | number}}
+            </ion-col>
+          </ion-row>  
+        </ion-item>
+  
+      </ion-grid>
+  </ion-card>
+
+  <!--<ion-card>
+    <ion-grid>
+
+      <ion-item-sliding>
+        <ion-item-options side="start">
+          <ion-item-option (click)="delItem()" color="danger" expandable>
+            <div class="delete-item">Eliminar</div>
+          </ion-item-option>
+        </ion-item-options>
+    
+        <ion-item>
+          <div style="color: #3a673c; font-weight: bold;">Produnto #1</div>
+        </ion-item>
+      </ion-item-sliding>
+
+      <ion-item>
+        <ion-row class="menu-cont-wrapp" style="font-size: 13px;">
+          <ion-col size="10">
+            <b>{{pro_data_name}}</b>
+          </ion-col>
+          <ion-col size="2" align="right">
+              <img class="img-cant-fert" (click)="addVal()" src="/assets/icon/more-fer.png">
+          </ion-col>
+          <ion-col size="10">
+              <b>Formade pago:</b> {{pay_data_value}}
+              <br/>
+              <b>Presentación:</b> {{unid}}
+          </ion-col>
+          <ion-col size="2">
+              <input type="number" color="dark" [(ngModel)]="val_cant" style="border: 0; padding-left: 25px;"/>
+          </ion-col>
+          <ion-col size="10">
+            <b>Precio de lista:</b> ${{price | number}}
+          </ion-col>
+          <ion-col size="2" align="right">
+            <img class="img-cant-fert" (click)="removeVal()" src="/assets/icon/less-fer.png">
+          </ion-col>
+        </ion-row>  
+      </ion-item>
+
+    </ion-grid>
+  </ion-card>-->
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      distance="1%"
+      loadingText="Cargando datos...">
+    </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+
+</ion-content>
+
+<ion-footer>
+
+    <ion-row style="align-items: baseline;">
+        <ion-col>
+          <div class="btn-cancel">
+            <button (click)="addMore()" class="add-ped-style" style="background-color: var(--ion-color-success, #10dc60) !important; color: white;">
+              Agregar <ion-icon name="add"></ion-icon>
+            </button>
+          </div>
+        </ion-col>
+        <ion-col>
+          <button (click)="addFinish()" class="add-ped-style" style="margin-top: 0 !important;">
+              Solicitar pedido <ion-icon name="checkmark"></ion-icon>
+          </button>
+        </ion-col>
+    </ion-row> 
+
+</ion-footer>
